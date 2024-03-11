@@ -4,15 +4,12 @@
     {
         public static double Saikoro(int x)
         {
-            if (x > 0 && x <= 6)
-            {
-                return 1 / (double)6;
-            }
-            else
-            {
-                return 0;
+           return (x > 0 && x <= 6) ? 1 / (double)6 : 0;
+        }
 
-            }
+        public static double Impulse(int x)
+        {
+            return x == 0 ? 1 : 0;
         }
     }
 }

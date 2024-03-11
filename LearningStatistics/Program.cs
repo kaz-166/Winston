@@ -36,7 +36,11 @@ var histB = new Histogram(histogramB);
 Console.WriteLine("Entropy of Histogram A is {0}", histA.Entropy());
 Console.WriteLine("Entropy of Histogram B is {0}", histB.Entropy());
 
-var dist = new Distribution(ProbabilityFunctions.Saikoro);
-Console.WriteLine("E[X]; {0}", dist.Expectation(x => x));
-Console.WriteLine("V[X]; {0}", dist.Variant(x => x));
+var dist1 = new Distribution(ProbabilityFunctions.Saikoro);
+Console.WriteLine("E[X]; {0}", dist1.Expectation(x => x));
+Console.WriteLine("V[X]; {0}", dist1.Variant(x => x));
+
+var dist2 = new Distribution(ProbabilityFunctions.Impulse);
+Console.WriteLine("E[X]; {0}", dist2.Expectation(x => x));
+Console.WriteLine("V[X]; {0}", dist2.Variant(x => x));
 
