@@ -1,6 +1,7 @@
 ﻿// Practice 2.2
 // elements
 using LearningStatistics.src;
+using LearningStatistics.src.lib;
 
 int[] elementsA = { 0, 3, 3, 5, 5, 5, 5, 7, 7, 10 };
 int[] elementsB = { 0, 1, 2, 3, 5, 5, 7, 8, 9, 10 };
@@ -34,3 +35,8 @@ var histB = new Histogram(histogramB);
 // Display Calculated Entropies.
 Console.WriteLine("Entropy of Histogram A is {0}", histA.Entropy());
 Console.WriteLine("Entropy of Histogram B is {0}", histB.Entropy());
+
+var dist = new Distribution(ProbabilityFunctions.Saikoro);
+Console.WriteLine("E[X]; {0}", dist.Expectation(x => x));
+Console.WriteLine("V[X]; {0}", dist.Variant(x => x));
+
