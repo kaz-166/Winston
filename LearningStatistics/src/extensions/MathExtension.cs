@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="n">Natural number</param>
         /// <returns>Factorial</returns>
-        public static int Factorial(this int n) 
+        public static Int128 Factorial(this int n) 
         {
             return n > 0 ? n * Factorial(n - 1) : 1;
         }
@@ -21,7 +21,7 @@
         /// <param name="n">Natural number</param>
         /// <param name="r">Natural number</param>
         /// <returns>Permutation</returns>
-        public static int Permutation(this int n, int r)
+        public static Int128 Permutation(this int n, int r)
         {
             return Factorial(n) / Factorial(r);
         }
@@ -32,7 +32,7 @@
         /// <param name="n">Natural number</param>
         /// <param name="r">Natural number</param>
         /// <returns>Combination</returns>
-        public static int Combination(this int n, int r)
+        public static Int128 Combination(this int n, int r)
         {
             return Factorial(n) / (Factorial(n - r) * Factorial(r));
         }
@@ -77,7 +77,7 @@
         {
             const int PSEUDO_INFINITY = 10000;
 
-            return Sum(func , - PSEUDO_INFINITY, PSEUDO_INFINITY);
+            return Sum(func, - PSEUDO_INFINITY, PSEUDO_INFINITY);
         }
 
         /// <summary>
