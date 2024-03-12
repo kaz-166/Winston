@@ -61,7 +61,7 @@ namespace LearningStatistics.src.distributions.discrete
         /// <returns>Kurtosis</returns>
         public double Kurtosis()
         {
-            return Expectation(x => Math.Pow(x - Expectation(), 4)); ;
+            return Expectation(x => Math.Pow(x - Expectation(), 4));
         }
 
         /// <summary>

@@ -9,6 +9,10 @@
         /// Calculate Factorial
         /// </summary>
         /// <param name="n">Natural number</param>
+        /// <remarks>
+        /// Result of factorial(n!) is TOO large number to be represented by primary type such as int or long.
+        /// So, this method uses Int128 which represents 128-bit signed integer.(Supported version is .NET 7,8,9)
+        /// </remarks>
         /// <returns>Factorial</returns>
         public static Int128 Factorial(this int n) 
         {
@@ -20,6 +24,11 @@
         /// </summary>
         /// <param name="n">Natural number</param>
         /// <param name="r">Natural number</param>
+        /// <remarks>
+        /// Calculation of Permutation uses Factorial(nPr = n!/(n-r)!).
+        /// And result of factorial(n!) is TOO large number to be represented by primary type such as int or long.
+        /// So, this method uses Int128 which represents 128-bit signed integer.(Supported version is .NET 7,8,9)
+        /// </remarks>
         /// <returns>Permutation</returns>
         public static Int128 Permutation(this int n, int r)
         {
@@ -31,6 +40,11 @@
         /// </summary>
         /// <param name="n">Natural number</param>
         /// <param name="r">Natural number</param>
+        /// <remarks>
+        /// Calculation of Combination uses Factorial(nCr = n!/(n-r)!r!).
+        /// And result of factorial(n!) is TOO large number to be represented by primary type such as int or long.
+        /// So, this method uses Int128 which represents 128-bit signed integer.(Supported version is .NET 7,8,9)
+        /// </remarks>
         /// <returns>Combination</returns>
         public static Int128 Combination(this int n, int r)
         {
@@ -67,7 +81,6 @@
             }
             return sum;
         }
-
 
         /// <summary>
         /// Calculate summation from -∞ to +∞
