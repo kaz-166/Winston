@@ -37,13 +37,22 @@ namespace LearningStatistics.src.distributions.discrete
         }
 
         /// <summary>
-        /// Calculate Variant: E[(X - u)^2]
+        /// Calculate Variance: E[(X - u)^2]
         /// </summary>
-        /// <returns>Variant</returns>
-        public double Variant()
+        /// <returns>Variance</returns>
+        public double Variance()
         {
             // V[X] = E[X^2] - (E[X])^2
             return Expectation(x => x * x) - Expectation() * Expectation();
+        }
+
+        /// <summary>
+        /// Calculate standard deviation
+        /// </summary>
+        /// <returns>standart deviation</returns>
+        public double StdDeviation()
+        {
+            return Math.Sqrt(Variance());
         }
 
         /// <summary>
@@ -52,7 +61,7 @@ namespace LearningStatistics.src.distributions.discrete
         /// <returns>Skewness</returns>
         public double Skewness()
         {
-            return Expectation(x => Math.Pow(x - Expectation(), 3));
+            return Expectation(x => Math.Pow(x - Expectation(), 3)) / Math.Pow(StdDeviation(), 3);
         }
 
         /// <summary>
@@ -61,7 +70,7 @@ namespace LearningStatistics.src.distributions.discrete
         /// <returns>Kurtosis</returns>
         public double Kurtosis()
         {
-            return Expectation(x => Math.Pow(x - Expectation(), 4));
+            return Expectation(x => Math.Pow(x - Expectation(), 4)) / Math.Pow(StdDeviation(), 4);
         }
 
         /// <summary>
@@ -72,6 +81,16 @@ namespace LearningStatistics.src.distributions.discrete
         public double Moment(int dimension)
         {
             return Expectation(x => Math.Pow(x - Expectation(), dimension));
+        }
+
+        /// <summary>
+        /// Calculate standard N dimentional moment
+        /// </summary>
+        /// <param name="dimension">dimension</param>
+        /// <returns>Moment of N dimension</returns>
+        public double StdMoment(int dimension)
+        {
+            return Expectation(x => Math.Pow(x - Expectation(), dimension)) / Math.Pow(StdDeviation(), dimension);
         }
 
         /// <summary>
