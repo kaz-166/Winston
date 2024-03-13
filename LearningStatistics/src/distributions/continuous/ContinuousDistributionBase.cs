@@ -2,7 +2,7 @@
 
 namespace LearningStatistics.src.distributions.continuous
 {
-    public class ContinuousDistributionBase
+    public class ContinuousDistributionBase : AbstractDistribution<double>
     {
         protected Func<double, double> _func;
 
@@ -11,7 +11,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// </summary>
         /// <param name="x">x</param>
         /// <returns>f(x)</returns>
-        public double Value(double x)
+        public override double Value(double x)
         {
             return _func(x);
         }
@@ -20,7 +20,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// Calculate Expectation : E[X]
         /// </summary>
         /// <returns></returns>
-        public double Expectation()
+        public override double Expectation()
         {
             return Expectation(x => x);
         }
@@ -30,7 +30,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// </summary>
         /// <param name="phy"></param>
         /// <returns>Expectation</returns>
-        public double Expectation(Func<double, double> phy)
+        public override double Expectation(Func<double, double> phy)
         {
             Func<double, double> f = x => phy(x) * _func(x);
             return f.Integral();
@@ -40,7 +40,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// Calculate Variance: E[(X - u)^2]
         /// </summary>
         /// <returns>Variance</returns>
-        public double Variance()
+        public override double Variance()
         {
             // V[X] = E[X^2] - (E[X])^2
             return Expectation(x => x * x) - Expectation() * Expectation();
@@ -50,7 +50,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// Calculate standard deviation
         /// </summary>
         /// <returns>standart deviation</returns>
-        public double StdDeviation() 
+        public override double StdDeviation() 
         {
             return Math.Sqrt(Variance());
         }
@@ -59,7 +59,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// Calculate Skewness: E[(X - u)^3]
         /// </summary>
         /// <returns>Skewness</returns>
-        public double Skewness()
+        public override double Skewness()
         {
             return Expectation(x => Math.Pow(x - Expectation(), 3)) / Math.Pow(StdDeviation(), 3);
         }
@@ -68,7 +68,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// Calculate Kurtosis: E[(X - u)^4]
         /// </summary>
         /// <returns>Kurtosis</returns>
-        public double Kurtosis()
+        public override double Kurtosis()
         {
             return Expectation(x => Math.Pow(x - Expectation(), 4)) / Math.Pow(StdDeviation(), 4);
         }
@@ -78,7 +78,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// </summary>
         /// <param name="dimension">dimension</param>
         /// <returns>Moment of N dimension</returns>
-        public double Moment(int dimension)
+        public override double Moment(int dimension)
         {
             return Expectation(x => Math.Pow(x - Expectation(), dimension));
         }
@@ -88,7 +88,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// </summary>
         /// <param name="dimension">dimension</param>
         /// <returns>Moment of N dimension</returns>
-        public double StdMoment(int dimension)
+        public override double StdMoment(int dimension)
         {
             return Expectation(x => Math.Pow(x - Expectation(), dimension)) / Math.Pow(StdDeviation(), dimension);
         }
