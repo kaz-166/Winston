@@ -32,6 +32,11 @@
         /// <returns>Permutation</returns>
         public static Int128 Permutation(this int n, int r)
         {
+            // [OPTIMIZE]: Calculation by recursive call demand high computation costs.
+            //             To reduce the costs, optimization is required.
+            //             n!/r! = n * (n - 1) * (n - 2) * ... * (n - r + 1)
+            //             n!/r! : High cost
+            //             n * (n - 1) * (n - 2) * ... * (n - r + 1) : Relatively low cost
             return Factorial(n) / Factorial(r);
         }
 
@@ -48,6 +53,8 @@
         /// <returns>Combination</returns>
         public static Int128 Combination(this int n, int r)
         {
+            // [OPTIMIZE]: Calculation by recursive call demand high computation costs.
+            //           To reduce the costs, optimization is required.
             return Factorial(n) / (Factorial(n - r) * Factorial(r));
         }
 
