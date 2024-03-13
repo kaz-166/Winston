@@ -36,9 +36,11 @@ $$P(X = 2^n) = \cfrac{1}{2^n}$$
 で表される。
 
 ### ii)
-$$E(X) = \cfrac{1}{2} \cdot 2 + \cfrac{1}{2^2} \cdot 2^2 + \cfrac{1}{2^3} \cdot 2^3 + \cdots$$
+$$E(X) = \lim_{n\to \infty}\sum_{k = 1}^{n}\cfrac{1}{2^k} \cdot 2^k$$
 
 $$= \lim_{n\to \infty}\sum_{k = 1}^{n}1$$
+
+$$= 1 + 1 + 1 + \cdots$$
 
 よって $E(X)$ は正の無限大に発散するため、存在しない。
 ## 5-4 最小平均二乗
