@@ -118,19 +118,30 @@ $\cfrac{1}{8}$
 > 
 >  $P(A | C) = 0.95$ 、 $P(A^c | C^c) = 0.95$ 、検査を受ける人の中で実際にがんである確率が $P(C | A) = 0.005$のとき、 $P(C | A)$ を求めよ。
 
+まず、 $P(A^c \mid C)$ を求める。
+
 $$P(C) = P(C \cap (A \cup A^c))$$
 $$= P((C \cap A) \cup (C \cap A^c))$$
 $$= P(C \cap A) + P(C \cap A^c)$$
+
+乗法定理より、
+
 $$= P(C) \cdot P(A \mid C) + P(C) \cdot P(A^c \mid C)$$
+
 $$\iff P(A^c \mid C) = 1 - P(A \mid C)$$  
-$P(A \mid C)=0.95$ より、 $P(A^c \mid C) = 0.05$
+
+$P(A \mid C)=0.95$ より、
+
+$$P(A^c \mid C) = 0.05$$
+
+次に $P(A \mid C^c)$ を求める。
 
 $$P(A \cap C) \cup P(A^c \cap C) \cup P(A \cap C^c) \cup P(A^c \cap C^c) = 1$$
-$$\iff$  P(C) \cdot P(A \mid C) + P(C) \cdot P(A^c \mid C) + P(C^c) \cdot P(A \mid C^c) + P(C^c) \cdot P(A^c \mid C^c) = 1$$
 
-$P(C)=0.005$  
-$P(A^c \mid C^c)=0.95$ より、  
-$P(A \mid C^c) = 0.05$  
+$$\iff  P(C) \cdot P(A \mid C) + P(C) \cdot P(A^c \mid C) + P(C^c) \cdot P(A \mid C^c) + P(C^c) \cdot P(A^c \mid C^c) = 1$$
+
+$P(C)=0.005$  、 $P(A^c \mid C^c)=0.95$ より、  
+$$P(A \mid C^c) = 0.05$$  
 
 ベイズの定理より、  
 $$P(C|A) = \cfrac{P(C) \cdot P(A \mid C)}{P(C) \cdot P(A \mid C) + P(C^c) \cdot P(A \mid C^c)}$$
