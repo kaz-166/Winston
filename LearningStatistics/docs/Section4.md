@@ -50,6 +50,9 @@ $$_nC_r (n=30, r=15)$$
 $$=155117520$$   
   
 **(答). 155117520通り**
+
+(注記) 計算に使用したコードは下記
+https://github.com/kaz-166/LearningStatistics/blob/692a377ca42b08ca6acda88c09bcf0b2d06b7ec1/LearningStatistics/calcs/Answer.cs#L7-L16
 ## 4-4　誕生日の問題
 > r人の集団中に同じ誕生日の人が少なくとも2人ある確率は
 > $$P_r = 1 - (1 - \cfrac{1}{365}) \cdot (1 - \cfrac{2}{365}) \cdot (1 -\cfrac{3}{365}) \dots (1 - \cfrac{(r - 1)}{365})$$
