@@ -27,7 +27,8 @@ $$= 9$$
 
 **(答). 89.4076...**
 
-
+(注記) 計算に使用したコードは下記
+https://github.com/kaz-166/LearningStatistics/blob/2a1aba2cf17e57e1ea5c34679c2680e1e9d4f7ce/LearningStatistics/calcs/Answer.cs#L19-L28
 ## 5-3 聖ペテルスブルグの逆説
 > コインを繰り返し投げ、初めて表が出たときに止める。それが $n$ 回目であるとき、 $2^n$ 円を得るものとする。このとき、
 > 
