@@ -22,8 +22,7 @@ namespace LearningStatistics.calcs
             var money = new List<double>() { 40000000, 10000000, 200000, 10000000, 100000, 1000000, 140000, 10000, 1000, 200 };
 
             // 宝くじの総本数は1300万通
-            var total = 13000000;
-            var dist = new GeneralDistribution(number.Select(x => x / total).ToArray());
+            var dist = new GeneralDistribution(number.Select(x => x / 13000000).ToArray());
 
             Console.WriteLine("5-2 宝くじの期待値は{0}円です。", dist.Expectation(x => (x >= 0 && x < money.Count) ? money[x] : 0));
         }
