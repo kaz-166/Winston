@@ -117,7 +117,7 @@
             return sum;
         }
 
-        public static double Sum(this Func<Tuple<int, int>, double> func)
+        public static double Sum(this Func<int, int, double> func)
         {
             const int PSEUDO_INFINITY = 10000;
 
@@ -126,7 +126,7 @@
             {
                 for (var j = 0; j < PSEUDO_INFINITY; j++) 
                 {
-                    func(new Tuple<int, int>(i, j));
+                    func(i, j);
                 }
             }
             return sum;

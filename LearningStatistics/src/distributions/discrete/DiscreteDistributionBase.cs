@@ -4,7 +4,24 @@ namespace LearningStatistics.src.distributions.discrete
 {
     public class DiscreteDistributionBase : AbstractDistribution<int>
     {
+        /// <summary>
+        /// Probability Density Function
+        /// </summary>
         protected Func<int, double> _func;
+
+        /// <summary>
+        /// Expectation
+        /// </summary>
+        private readonly double _exp;
+
+        /// <summary>
+        /// Variance
+        /// </summary>
+        private readonly double _var;
+
+        public DiscreteDistributionBase()
+        {
+        }
 
         /// <summary>
         /// Return function value : f(x)

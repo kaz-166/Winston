@@ -2,62 +2,66 @@
 
 namespace LearningStatistics.src.distributions.discrete
 {
-    internal class XYDiscreteDistributionBase : AbstractDistribution<Tuple<int, int>>
+    // 綺麗だけど動かない
+    internal class XYDiscreteDistributionBase
     {
-        private readonly Func<Tuple<int, int>, double> _func;
-    
+        private readonly Func<int, int, double> _func;
+
         /// <summary>
-        /// E[XY]
+        /// Marginal Probability Distribution X
+        /// </summary>
+        protected readonly DiscreteDistributionBase _mpdX;
+
+        /// <summary>
+        /// Marginal Probability Distribution Y
+        /// </summary>
+        protected readonly DiscreteDistributionBase _mpdY;
+
+        public XYDiscreteDistributionBase()
+        {
+            _mpdX = new DiscreteDistributionBase();
+            _mpdY = new DiscreteDistributionBase();
+        }
+
+        /// <summary>
+        /// Marginal Probability Distribution X
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public double MarginalProbabilityDistributionX(int x)
+        {
+            return _mpdX.Value(x);
+        }
+
+        /// <summary>
+        /// Marginal Probability Distribution Y
+        /// </summary>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public double MarginalProbabilityDistributionY(int y)
+        {
+            return _mpdY.Value(y);
+        }
+
+        /// <summary>
+        /// Calculate Covariance(X, Y)
         /// </summary>
         /// <returns></returns>
-        public override double Expectation()
+        public double Covariance() 
         {
-            Func<Tuple<int, int>, double> f = x => x.Item1 * x.Item2 * _func(x);
+            return Expectation((x, y) => x * y) - _mpdX.Expectation(x => x) * _mpdY.Expectation(y => y);
+        }
+
+        /// <summary>
+        /// Calculate Expectation(X, Y)
+        /// </summary>
+        /// <param name="phy"></param>
+        /// <returns></returns>
+        public double Expectation(Func<int, int, double> phy)
+        {
+            Func<int, int, double> f = (x, y) => phy(x, y) * _func(x, y);
             return f.Sum();
         }
 
-        public override double Expectation(Func<Tuple<int, int>, double> phy)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override double Kurtosis()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override double Moment(int dimension)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override double Skewness()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override double StdDeviation()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override double StdMoment(int dimension)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override double Value(Tuple<int, int> x)
-        {
-            return _func(x);
-        }
-
-        /// <summary>
-        /// Calculate Covariance
-        /// </summary>
-        /// <returns></returns>
-        public override double Variance()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
