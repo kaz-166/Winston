@@ -97,7 +97,7 @@
         {
             const int PSEUDO_INFINITY = 10000;
 
-            return Sum(func, - PSEUDO_INFINITY, PSEUDO_INFINITY);
+            return Sum(func, 0, PSEUDO_INFINITY);
         }
 
         /// <summary>
@@ -115,6 +115,37 @@
                 sum += func(i);
             }
             return sum;
+        }
+
+        public static double Sum(this Func<Tuple<int, int>, double> func)
+        {
+            const int PSEUDO_INFINITY = 10000;
+
+            var sum = 0.0;
+            for (var i = 0; i < PSEUDO_INFINITY; i ++) 
+            {
+                for (var j = 0; j < PSEUDO_INFINITY; j++) 
+                {
+                    func(new Tuple<int, int>(i, j));
+                }
+            }
+            return sum;
+        }
+
+
+        /// <summary>
+        /// Calculate total product
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static int Product(this int[] x)
+        {
+            var product = 0;
+            foreach (var item in x) 
+            {
+                product *= item;
+            }
+            return product;
         }
     }
 }
