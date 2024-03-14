@@ -131,21 +131,5 @@
             }
             return sum;
         }
-
-
-        /// <summary>
-        /// Calculate total product
-        /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
-        public static int Product(this int[] x)
-        {
-            var product = 0;
-            foreach (var item in x) 
-            {
-                product *= item;
-            }
-            return product;
-        }
     }
 }

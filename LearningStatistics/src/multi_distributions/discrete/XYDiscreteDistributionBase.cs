@@ -1,27 +1,10 @@
 ﻿using LearningStatistics.src.extensions;
 
-namespace LearningStatistics.src.distributions.discrete
+namespace LearningStatistics.src.multi_distributions.discrete
 {
-    // 綺麗だけど動かない
     internal class XYDiscreteDistributionBase
     {
         private readonly Func<int, int, double> _func;
-
-        /// <summary>
-        /// Marginal Probability Distribution X
-        /// </summary>
-        protected readonly DiscreteDistributionBase _mpdX;
-
-        /// <summary>
-        /// Marginal Probability Distribution Y
-        /// </summary>
-        protected readonly DiscreteDistributionBase _mpdY;
-
-        public XYDiscreteDistributionBase()
-        {
-            _mpdX = new DiscreteDistributionBase();
-            _mpdY = new DiscreteDistributionBase();
-        }
 
         /// <summary>
         /// Marginal Probability Distribution X
@@ -30,7 +13,14 @@ namespace LearningStatistics.src.distributions.discrete
         /// <returns></returns>
         public double MarginalProbabilityDistributionX(int x)
         {
-            return _mpdX.Value(x);
+            const double PSEUDO_INFINITY = 10000;
+
+            var sum = 0.0;
+            for (var y = 0; y < PSEUDO_INFINITY; y++)
+            {
+                sum += _func(x, y);
+            }
+            return sum;
         }
 
         /// <summary>
@@ -40,16 +30,23 @@ namespace LearningStatistics.src.distributions.discrete
         /// <returns></returns>
         public double MarginalProbabilityDistributionY(int y)
         {
-            return _mpdY.Value(y);
+            const double PSEUDO_INFINITY = 10000;
+
+            var sum = 0.0;
+            for (var x = 0; x < PSEUDO_INFINITY; x++)
+            {
+                sum += _func(x, y);
+            }
+            return sum;
         }
 
         /// <summary>
         /// Calculate Covariance(X, Y)
         /// </summary>
         /// <returns></returns>
-        public double Covariance() 
+        public double Covariance()
         {
-            return Expectation((x, y) => x * y) - _mpdX.Expectation(x => x) * _mpdY.Expectation(y => y);
+            return Expectation((x, y) => x * y) - Expectation((x, y) => x) * Expectation((x, y) => y);
         }
 
         /// <summary>

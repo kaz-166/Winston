@@ -10,20 +10,6 @@ namespace LearningStatistics.src.distributions.discrete
         protected Func<int, double> _func;
 
         /// <summary>
-        /// Expectation
-        /// </summary>
-        private readonly double _exp;
-
-        /// <summary>
-        /// Variance
-        /// </summary>
-        private readonly double _var;
-
-        public DiscreteDistributionBase()
-        {
-        }
-
-        /// <summary>
         /// Return function value : f(x)
         /// </summary>
         /// <param name="x">x</param>
@@ -59,7 +45,6 @@ namespace LearningStatistics.src.distributions.discrete
         /// <returns>Variance</returns>
         public override double Variance()
         {
-            // V[X] = E[X^2] - (E[X])^2
             return Expectation(x => x * x) - Expectation() * Expectation();
         }
 
