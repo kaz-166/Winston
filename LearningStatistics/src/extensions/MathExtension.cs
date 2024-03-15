@@ -126,7 +126,23 @@
             {
                 for (var j = 0; j < PSEUDO_INFINITY; j++) 
                 {
-                    func(i, j);
+                    sum += func(i, j);
+                }
+            }
+            return sum;
+        }
+
+        public static double Integral(this Func<double, double, double> func)
+        {
+            const double PSEUDO_INFINITY = 1000;
+            const double RESOLUTION = 0.1;
+
+            var sum = 0.0;
+            for (var i = -PSEUDO_INFINITY; i < PSEUDO_INFINITY; i += RESOLUTION)
+            {
+                for (var j = -PSEUDO_INFINITY; j < PSEUDO_INFINITY; j += RESOLUTION)
+                {
+                    sum += func(i, j);
                 }
             }
             return sum;

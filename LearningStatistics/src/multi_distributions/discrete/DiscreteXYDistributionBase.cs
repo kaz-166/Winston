@@ -2,9 +2,9 @@
 
 namespace LearningStatistics.src.multi_distributions.discrete
 {
-    internal class XYDiscreteDistributionBase
+    public class DiscreteXYDistributionBase
     {
-        private readonly Func<int, int, double> _func;
+        protected Func<int, int, double> _func;
 
         /// <summary>
         /// Marginal Probability Distribution X
@@ -41,6 +41,35 @@ namespace LearningStatistics.src.multi_distributions.discrete
         }
 
         /// <summary>
+        /// Calculate Expectation(X, Y)
+        /// </summary>
+        /// <param name="phy"></param>
+        /// <returns></returns>
+        public double Expectation(Func<int, int, double> phy)
+        {
+            Func<int, int, double> f = (x, y) => phy(x, y) * _func(x, y);
+            return f.Sum();
+        }
+
+        /// <summary>
+        /// Calculate Variance V(X)
+        /// </summary>
+        /// <returns></returns>
+        public double VarianceX() 
+        {
+            return Expectation((x, y) => Math.Pow(x  - Expectation((x, y) => x), 2));
+        }
+
+        /// <summary>
+        /// Calculate Variance V(Y)
+        /// </summary>
+        /// <returns></returns>
+        public double VarianceY()
+        {
+            return Expectation((x, y) => Math.Pow(y - Expectation((x, y) => y), 2));
+        }
+
+        /// <summary>
         /// Calculate Covariance(X, Y)
         /// </summary>
         /// <returns></returns>
@@ -50,14 +79,12 @@ namespace LearningStatistics.src.multi_distributions.discrete
         }
 
         /// <summary>
-        /// Calculate Expectation(X, Y)
+        /// Calculate Corelative Coefficient
         /// </summary>
-        /// <param name="phy"></param>
         /// <returns></returns>
-        public double Expectation(Func<int, int, double> phy)
+        public double CorrelativeCoefficient() 
         {
-            Func<int, int, double> f = (x, y) => phy(x, y) * _func(x, y);
-            return f.Sum();
+            return Covariance() / Math.Sqrt((VarianceX() * VarianceY()));
         }
 
     }

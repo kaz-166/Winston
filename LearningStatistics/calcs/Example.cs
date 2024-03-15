@@ -1,4 +1,7 @@
 ﻿using LearningStatistics.src.distributions.discrete;
+using LearningStatistics.src.multi_distributions.continuous;
+using LearningStatistics.src.multi_distributions.discrete;
+using System.Diagnostics;
 
 namespace LearningStatistics.calcs
 {
@@ -14,6 +17,17 @@ namespace LearningStatistics.calcs
             Console.WriteLine("標準偏差: {0}", dist.StdDeviation());
             Console.WriteLine("歪度: {0}", dist.Skewness());
             Console.WriteLine("尖度: {0}", dist.Kurtosis());
+        }
+
+        public static void p139() 
+        {
+            var dist = new SampleXYDistribution();
+            Console.WriteLine("期待値X: {0}", dist.Expectation((x, y) => x));
+            Console.WriteLine("期待値Y: {0}", dist.Expectation((x, y) => y));
+            Console.WriteLine("分散X: {0}", dist.VarianceX());
+            Console.WriteLine("分散Y: {0}", dist.VarianceY());
+            Console.WriteLine("共分散: {0}", dist.Covariance());
+            Console.WriteLine("相関係数: {0}", dist.CorrelativeCoefficient());
         }
     }
 }
