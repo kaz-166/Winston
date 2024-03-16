@@ -58,6 +58,13 @@ $$ = \cfrac{1}{\sigma^3}(\int_{-\infty}^{\infty}x^3 f(x)dx -3 (\int_{-\infty}^{\
 $$ = \cfrac{1}{\sigma^3}(\int_{0}^{1}x^3 dx -3 (\int_{0}^{1}x dx) (\int_{0}^{1}x^2 dx) + 2 (\int_{0}^{1}x dx)^3)$$
 
 $$=0$$
+
+突度は、
+
+$$\cfrac{E((x - \mu)^4)}{\sigma^4} = \cfrac{1}{\sigma^4}(E(x^4) - 4 {\mu}^2 E(x^2) + {\mu}^4 - 4 \mu E(x^3) - 4 {\mu}^3 E(x) + 2 {\mu}^2 E(x^2))$$
+
+$$ = \cfrac{1}{\sigma^4}(\int_{0}^{1}x^4 dx - 4 (\int_{0}^{1}x dx)^2 \int_{0}^{1}x^2 dx + (\int_{0}^{1}x dx)^4 - 4 (\int_{0}^{1}x dx) (\int_{0}^{1}x^3 dx) - 4 (\int_{0}^{1}x dx)^4 + 2 (\int_{0}^{1}x dx)^2 \int_{0}^{1}x^2 dx)$$
+
 ## 5-2
 > 5.2節の宝くじの期待値を求めよ。
 
