@@ -60,9 +60,9 @@ $$1 - \int_{\mu - k\sigma}^{\mu + k\sigma}f(x)dx = 1 - \int_{0}^{1}f(x)dx = 0 \l
 
 $$\cfrac{E((x - \mu)^3)}{\sigma^3} = \cfrac{1}{\sigma^3}(E(x^3) -3 \mu E(x^2) + 3 {\mu}^3 - \mu^3)$$
 
-$$ = \cfrac{1}{\sigma^3}(\int_{-\infty}^{\infty}x^3 f(x)dx -3 (\int_{-\infty}^{\infty}x f(x)dx) (\int_{-\infty}^{\infty}x^2 f(x)dx) + 2 (\int_{-\infty}^{\infty}x f(x)dx)^3)$$
+$$ 　　　　　　= \cfrac{1}{\sigma^3}(\int_{-\infty}^{\infty}x^3 f(x)dx -3 (\int_{-\infty}^{\infty}x f(x)dx) (\int_{-\infty}^{\infty}x^2 f(x)dx) + 2 (\int_{-\infty}^{\infty}x f(x)dx)^3)$$
 
-$$ = \cfrac{1}{\sigma^3}(\int_{0}^{1}x^3 dx -3 (\int_{0}^{1}x dx) (\int_{0}^{1}x^2 dx) + 2 (\int_{0}^{1}x dx)^3)$$
+$$ 　　= \cfrac{1}{\sigma^3}(\int_{0}^{1}x^3 dx -3 (\int_{0}^{1}x dx) (\int_{0}^{1}x^2 dx) + 2 (\int_{0}^{1}x dx)^3)$$
 
 $$=0$$
 
@@ -70,7 +70,7 @@ $$=0$$
 
 $$\alpha_4 = \cfrac{E((x - \mu)^4)}{\sigma^4} = \cfrac{1}{\sigma^4}(E(x^4) + 4 {\mu}^2 E(x^2) + {\mu}^4 - 4 \mu E(x^3) - 4 {\mu}^3 E(x) + 2 {\mu}^2 E(x^2))$$
 
-$$ = \cfrac{1}{\sigma^4}(\int_{0}^{1}x^4 dx + 6 (\int_{0}^{1}x dx)^2 \int_{0}^{1}x^2 dx - 4 (\int_{0}^{1}x dx) (\int_{0}^{1}x^3 dx) - 3 (\int_{0}^{1}x dx)^4)$$
+$$ 　　　　= \cfrac{1}{\sigma^4}(\int_{0}^{1}x^4 dx + 6 (\int_{0}^{1}x dx)^2 \int_{0}^{1}x^2 dx - 4 (\int_{0}^{1}x dx) (\int_{0}^{1}x^3 dx) - 3 (\int_{0}^{1}x dx)^4)$$
 
 $$= \cfrac{1}{80{\sigma}^2}$$
 
@@ -138,3 +138,31 @@ $$= \cfrac{(n + 1)(2n + 1)}{6} - (\cfrac{n + 1}{2})^2$$
 $$= \cfrac{n^2 - 1}{12}$$
 
 **(答). 期待値： $\cfrac{n + 1}{2}$ 分散： $\cfrac{n^2 - 1}{12}$**
+
+## 5-6 一様分布の平方変換
+> 確率変数 $X$ が[0, 1]上の一様分布に従うとき、 $X^2$ の累積分布関数、密度関数、分散を求めよ。
+
+累積分布関数は、
+
+$$F_{X^2}(x) = P(X^2 \leq x) = \int_{-\infty}^{\sqrt{x}}f(x)dx = \int_{0}^{\sqrt{x}}dx = \sqrt{x}$$
+
+$$F_{X^2}(x) = 0　　　　　(x \le 0)$$
+
+$$F_{X^2}(x) = \sqrt{x}　(0 \leq x \leq 1)$$
+
+$$F_{X^2}(x) = 1　　　　　(x \ge 1)$$
+
+確率密度関数は、
+
+$$f_{X^2}(x) = \frac{d}{dx}F_{X^2}(x) = \cfrac{d}{dx}\int_{-\infty}^{\sqrt{x}}f(x)dx = \cfrac{1}{2\sqrt{x}}$$
+
+期待値は
+
+$$E(X^2) = \int_{0}^{1}x^2f(x) = \cfrac{1}{3}$$
+
+分散は
+
+$$V(X^2) = E((X^2 - \mu)^2) = E(X^4) - (E(X^2))^2$$
+
+$$= \int_{0}^{1}x^4dx - (\int_{0}^{1}x^2dx) = \cfrac{4}{45}$$
+
