@@ -45,13 +45,19 @@ $$1 - \int_{\mu - k\sigma}^{\mu + k\sigma}f(x)dx = 1 - \int_{0}^{1}f(x)dx = 0 \l
 
  が成立する。よってチェビシェフの不等式が成り立つことが示された。(証終)
 
- 
-
-
 
 ### iii)
 > [0, 1]上の一様分布に関して、歪度および突度を求めよ。
 
+歪度は、
+
+$$\cfrac{E((x - \mu)^3)}{\sigma^3} = \cfrac{1}{\sigma^3}(E(x^3) -3 \mu E(x^2) + 3 {\mu}^3 - \mu^3)$$
+
+$$ = \cfrac{1}{\sigma^3}(\int_{-\infty}^{\infty}x^3 f(x)dx -3 (\int_{-\infty}^{\infty}x f(x)dx) (\int_{-\infty}^{\infty}x^2 f(x)dx) + 2 (\int_{-\infty}^{\infty}x f(x)dx)^3)$$
+
+$$ = \cfrac{1}{\sigma^3}(\int_{0}^{1}x^3 dx -3 (\int_{0}^{1}x dx) (\int_{0}^{1}x^2 dx) + 2 (\int_{0}^{1}x dx)^3)$$
+
+$$=0$$
 ## 5-2
 > 5.2節の宝くじの期待値を求めよ。
 
