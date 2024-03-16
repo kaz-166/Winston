@@ -173,6 +173,21 @@ $$f(x) = N(1, 0) = \cfrac{1}{\sqrt{2\pi}}e^{-\cfrac{x^2}{2}}$$
 
 $$F_{X^2}(x) = P(X^2 \leq x) = \cfrac{1}{\sqrt{2\pi}}\int_{-\sqrt{x}}^{\sqrt{x}}e^{-\cfrac{t^2}{2}}dt$$
 
-$$= \cfrac{1}{\sqrt{2\pi}}(\sqrt{x}e^{-\cfrac{x}{2}} - \sqrt{x}e^{-\cfrac{x}{2}}) + \cfrac{1}{\sqrt{2\pi}} (\int_{-\sqrt{x}}^{\sqrt{x}}t^{2}e^-\cfrac{t^2}{2})$$
+$$= \cfrac{2}{\sqrt{2\pi}}(\int_{0}^{\sqrt{x}}t^{2}e^-\cfrac{t^2}{2})$$
 
-次数増えってって無理では？
+$$= \cfrac{2}{\sqrt{2\pi}}(\int_{-\infty}^{\sqrt{x}}e^-\cfrac{t^2}{2}dt - \int_{-\infty}^{0}e^-\cfrac{t^2}{2}dt)$$
+
+[0, 1]の正規分布の累積分布関数を $\varPhi(x)$ とすると、 $F_{X^2}(x) = 2(\varPhi(\sqrt{x}) - \cfrac{1}{2})$ と表せる。
+
+密度関数は、
+
+$$f_{X^2}(x) = \cfrac{d}{dx}F_{X^2}(x) = 2\cfrac{d}{dx}\int_{0}^{\sqrt{x}}e^{\cfrac{t^2}{2}}dt$$
+
+ここで、 $\cfrac{d}{dx}\int_{0}^{\sqrt{x}}e^{\cfrac{t^2}{2}}dt$ の原始関数を $G(x)$ とおくと、
+
+$$\cfrac{d}{dx}\int_{0}^{\sqrt{x}}e^{\cfrac{t^2}{2}}dt = G(\sqrt{x}) - G(0)$$
+
+$$2\cfrac{d}{dx}\int_{0}^{\sqrt{x}}e^{\cfrac{t^2}{2}}dt = 2e^{-\cfrac{x^2}{2}}\cfrac{d(\sqrt{x})}{dx}$$
+
+$$= \cfrac{1}{\sqrt{2 \pi x}} e^{-\cfrac{x^2}{2}}$$
+
