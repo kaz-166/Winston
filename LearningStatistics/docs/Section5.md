@@ -4,7 +4,14 @@
 > [0, 6]上の一様分布の密度関数、期待値、分散を求めよ。
 
 密度関数は、
-$$f(x)=1/6 (0 \leq x \leq 6), 0 (x < 0, x > 6)$$
+
+$$
+f(x) = \begin{cases}
+    1/6 & (0 \leq x \leq 6) \\
+    0 & otherwise
+  \end{cases}
+$$
+
 期待値は、
 $$E(x) = \int_{-\infty}^{\infty}xf(x)dx$$
 $$= \cfrac{1}{6}\int_{0}^{6}xdx$$
