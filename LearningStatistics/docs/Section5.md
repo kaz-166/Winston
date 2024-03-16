@@ -19,6 +19,36 @@ $$= 9$$
 ### ii)
 > [0, 6]上の一様分布に関して、チェビシェフの不等式が成立することを示せ。
 
+$$P(|X - \mu| \geq k\sigma) = 1 - \int_{\mu - k\sigma}^{\mu + k\sigma}f(x)dx$$
+
+$\mu = 3$ 、 ${\sigma}^2 = 9$ なので、 $k > 1$ のとき、
+
+$$1 - \int_{\mu - k\sigma}^{\mu + k\sigma}f(x)dx = 1 - \int_{0}^{1}f(x)dx = 0 \leq \cfrac{1}{k^2} \cdots (1)$$
+
+ $k \leq 1$ のとき、
+
+ $$1 - \int_{\mu - k\sigma}^{\mu + k\sigma}f(x)dx = 1 - \cfrac{1}{6}(3(1 + k) - 3(1 - k)) = 1 - k$$
+
+ ここで、 $g(x) = x^3 - x^2 +1$ を考える。 $\cfrac{dg(x)}{dx} = x(3x -2)$ なので、 $0 \leq x \leq 1$ において
+ 
+ $$g(x) \geq g(\cfrac{2}{3}) = \cfrac{23}{27} \ge 0$$
+ 
+ よって、
+
+ $$\cfrac{1}{k^2} - (1 - k) = \cfrac{1}{k^2}g(k) \ge 0$$
+
+ $$\iff 1 - k = 1 - \int_{\mu - k\sigma}^{\mu + k\sigma}f(x)dx \leq \cfrac{1}{k^2} \cdots (2)$$
+
+ (1)、(2)より、すべての $k$ について
+
+ $$P(|X - \mu| \geq k\sigma) \leq \cfrac{1}{k^2}$$
+
+ が成立する。よってチェビシェフの不等式が成り立つことが示された。(証終)
+
+ 
+
+
+
 ### iii)
 > [0, 1]上の一様分布に関して、歪度および突度を求めよ。
 
