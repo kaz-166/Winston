@@ -61,9 +61,15 @@ $$=0$$
 
 突度は、
 
-$$\cfrac{E((x - \mu)^4)}{\sigma^4} = \cfrac{1}{\sigma^4}(E(x^4) - 4 {\mu}^2 E(x^2) + {\mu}^4 - 4 \mu E(x^3) - 4 {\mu}^3 E(x) + 2 {\mu}^2 E(x^2))$$
+$$\alpha_4 = \cfrac{E((x - \mu)^4)}{\sigma^4} = \cfrac{1}{\sigma^4}(E(x^4) + 4 {\mu}^2 E(x^2) + {\mu}^4 - 4 \mu E(x^3) - 4 {\mu}^3 E(x) + 2 {\mu}^2 E(x^2))$$
 
-$$ = \cfrac{1}{\sigma^4}(\int_{0}^{1}x^4 dx - 4 (\int_{0}^{1}x dx)^2 \int_{0}^{1}x^2 dx + (\int_{0}^{1}x dx)^4 - 4 (\int_{0}^{1}x dx) (\int_{0}^{1}x^3 dx) - 4 (\int_{0}^{1}x dx)^4 + 2 (\int_{0}^{1}x dx)^2 \int_{0}^{1}x^2 dx)$$
+$$ = \cfrac{1}{\sigma^4}(\int_{0}^{1}x^4 dx + 6 (\int_{0}^{1}x dx)^2 \int_{0}^{1}x^2 dx - 4 (\int_{0}^{1}x dx) (\int_{0}^{1}x^3 dx) - 3 (\int_{0}^{1}x dx)^4)$$
+
+$$= \cfrac{1}{80{\sigma}^2}$$
+
+ここで、 ${\sigma} = \cfrac{1}{12}$ より、 $\alpha_4 = \cfrac{9}{5}$　。よって、 $\beta_4 = \alpha_4 - 3 = -\cfrac{6}{5}$
+
+**(答). 歪度： $0$、突度： $-\cfrac{6}{5}$**
 
 ## 5-2
 > 5.2節の宝くじの期待値を求めよ。
