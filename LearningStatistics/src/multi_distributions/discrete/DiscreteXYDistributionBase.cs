@@ -4,7 +4,7 @@ namespace LearningStatistics.src.multi_distributions.discrete
 {
     public class DiscreteXYDistributionBase
     {
-        protected Func<int, int, double> _func;
+        protected Func<int, int, double> _func = (x, y) => 0;
 
         /// <summary>
         /// Marginal Probability Distribution X

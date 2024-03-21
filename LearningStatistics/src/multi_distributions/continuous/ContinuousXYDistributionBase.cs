@@ -1,48 +1,57 @@
 ﻿using LearningStatistics.src.extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LearningStatistics.src.multi_distributions.continuous
 {
     public class ContinuousXYDistributionBase
     {
-        protected Func<double, double, double> _func;
+        protected Func<double, double, double> _func = (x, y) => 0;
+
+        protected double PSEUDO_INFINITY = 10;
+
+        protected double RESOLUTION = 0.005;
 
         /// <summary>
         /// Marginal Probability Distribution X
+        /// This calculation uses Trapezoidal Approximation
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public double MarginalProbabilityDistributionX(int x)
+        public virtual double MarginalProbabilityDistributionX(double x)
         {
-            const double PSEUDO_INFINITY = 10000;
-
             var sum = 0.0;
-            for (var y = 0; y < PSEUDO_INFINITY; y++)
+            for (var y = -PSEUDO_INFINITY; y < PSEUDO_INFINITY; y += RESOLUTION)
             {
-                sum += _func(x, y);
+                sum += ((_func(x, y) + _func(x, y + 1)) / 2) * RESOLUTION;
             }
             return sum;
         }
 
         /// <summary>
         /// Marginal Probability Distribution Y
+        /// This calculation uses Trapezoidal Approximation
         /// </summary>
         /// <param name="y"></param>
         /// <returns></returns>
-        public double MarginalProbabilityDistributionY(int y)
+        public virtual double MarginalProbabilityDistributionY(double y)
         {
-            const double PSEUDO_INFINITY = 10000;
-
             var sum = 0.0;
-            for (var x = 0; x < PSEUDO_INFINITY; x++)
+            for (var x = -PSEUDO_INFINITY; x < PSEUDO_INFINITY; x += RESOLUTION)
             {
-                sum += _func(x, y);
+                sum += ((_func(x, y) + _func(x + 1, y)) / 2) * RESOLUTION;
             }
             return sum;
+        }
+
+        public double ExpectationX() 
+        {
+            Func<double, double> f = x => x * MarginalProbabilityDistributionX(x);
+            return f.Integral();
+        }
+
+        public double ExpectationY()
+        {
+            Func<double, double> f = y => y * MarginalProbabilityDistributionY(y);
+            return f.Integral();
         }
 
         /// <summary>

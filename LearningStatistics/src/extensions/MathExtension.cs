@@ -65,7 +65,7 @@
         /// <returns></returns>
         public static double Integral(this Func<double, double> func)
         {
-            const double PSEUDO_INFINITY = 10000;
+            const double PSEUDO_INFINITY = 100;
 
             return Integral(func, -PSEUDO_INFINITY, PSEUDO_INFINITY);
         }
@@ -79,7 +79,7 @@
         /// <returns></returns>
         public static double Integral(this Func<double, double> func, double a, double b)
         {
-            const double RESOLUTION = 0.01;
+            const double RESOLUTION = 0.005;
 
             var sum = 0.0;
             for (var x = a; x < b; x += RESOLUTION)
@@ -134,15 +134,15 @@
 
         public static double Integral(this Func<double, double, double> func)
         {
-            const double PSEUDO_INFINITY = 1000;
-            const double RESOLUTION = 0.1;
+            const double PSEUDO_INFINITY = 10;
+            const double RESOLUTION = 0.01;
 
             var sum = 0.0;
             for (var i = -PSEUDO_INFINITY; i < PSEUDO_INFINITY; i += RESOLUTION)
             {
                 for (var j = -PSEUDO_INFINITY; j < PSEUDO_INFINITY; j += RESOLUTION)
                 {
-                    sum += func(i, j);
+                    sum += func(i, j) * RESOLUTION * RESOLUTION;
                 }
             }
             return sum;

@@ -4,7 +4,7 @@ namespace LearningStatistics.src.distributions.continuous
 {
     public class ContinuousDistributionBase : AbstractDistribution<double>
     {
-        protected Func<double, double> _func;
+        protected Func<double, double> _func = x => 0;
 
         /// <summary>
         /// Return function value : f(x)

@@ -22,8 +22,12 @@ namespace LearningStatistics.calcs
         public static void p139() 
         {
             var dist = new SampleXYDistribution();
-            Console.WriteLine("期待値X: {0}", dist.Expectation((x, y) => x));
-            Console.WriteLine("期待値Y: {0}", dist.Expectation((x, y) => y));
+            Console.WriteLine("周辺確率密度関数X 0.5: {0}", dist.MarginalProbabilityDistributionX(0.5));
+            Console.WriteLine("周辺確率密度関数X 0.3: {0}", dist.MarginalProbabilityDistributionX(0.3));
+            Console.WriteLine("周辺確率密度関数X 0.3: {0}", dist.MarginalProbabilityDistributionX(0.1));
+            Console.WriteLine("期待値Y: {0}", dist.ExpectationY());
+            Console.WriteLine("期待値X: {0}", dist.ExpectationX());
+
             Console.WriteLine("分散X: {0}", dist.VarianceX());
             Console.WriteLine("分散Y: {0}", dist.VarianceY());
             Console.WriteLine("共分散: {0}", dist.Covariance());

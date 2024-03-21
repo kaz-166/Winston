@@ -7,7 +7,7 @@ namespace LearningStatistics.src.distributions.discrete
         /// <summary>
         /// Probability Density Function
         /// </summary>
-        protected Func<int, double> _func;
+        protected Func<int, double> _func = x => 0;
 
         /// <summary>
         /// Return function value : f(x)
