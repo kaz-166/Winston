@@ -45,13 +45,13 @@ namespace LearningStatistics.src.multi_distributions.continuous
         public double ExpectationX() 
         {
             Func<double, double> f = x => x * MarginalProbabilityDistributionX(x);
-            return f.Integral();
+            return f.MontecarloIntegral(-1, 1);
         }
 
         public double ExpectationY()
         {
             Func<double, double> f = y => y * MarginalProbabilityDistributionY(y);
-            return f.Integral();
+            return f.MontecarloIntegral(-1, 1);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace LearningStatistics.src.multi_distributions.continuous
         public double Expectation(Func<double, double, double> phy)
         {
             Func<double, double, double> f = (x, y) => phy(x, y) * _func(x, y);
-            return f.Integral();
+            return f.MontecarloIntegral(-1, 1);
         }
 
         /// <summary>

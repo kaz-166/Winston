@@ -8,7 +8,7 @@ namespace LearningStatistics.src.multi_distributions.continuous
         {
             // いやがらせ
             _func = (x, y) => (y >= 0.0 && x > y && x <= 1.0) ? 6 * (x - y) : 0;
-            PSEUDO_INFINITY = 10;
+            PSEUDO_INFINITY = 1;
             RESOLUTION = 0.005;
         }
 

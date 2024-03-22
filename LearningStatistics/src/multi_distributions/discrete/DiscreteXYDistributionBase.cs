@@ -57,7 +57,7 @@ namespace LearningStatistics.src.multi_distributions.discrete
         /// <returns></returns>
         public double VarianceX() 
         {
-            return Expectation((x, y) => Math.Pow(x  - Expectation((x, y) => x), 2));
+            return Expectation((x, y) => Math.Pow(x - Expectation((x, y) => x), 2));
         }
 
         /// <summary>
@@ -75,7 +75,8 @@ namespace LearningStatistics.src.multi_distributions.discrete
         /// <returns></returns>
         public double Covariance()
         {
-            return Expectation((x, y) => x * y) - Expectation((x, y) => x) * Expectation((x, y) => y);
+            var ex = Expectation((x, y) => x);
+            return Expectation((x, y) => x * y) - ex * ex;
         }
 
         /// <summary>

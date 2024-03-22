@@ -90,6 +90,26 @@
         }
 
         /// <summary>
+        /// Calculate integral from a to b
+        /// </summary>
+        /// <param name="func"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double MontecarloIntegral(this Func<double, double> func, double a, double b)
+        {
+            const int N = 1000;
+            var rand = new Random();
+            var sum = 0.0;
+            for (var i = 0; i < N; i++)
+            {
+                var x = a + (b - a) * rand.NextDouble();
+                sum += func(x) * (b - a);
+            }
+            return sum / N;
+        }
+
+        /// <summary>
         /// Calculate summation from -∞ to +∞
         /// </summary>
         /// <returns>Summation</returns>
@@ -146,6 +166,31 @@
                 }
             }
             return sum;
+        }
+
+        /// <summary>
+        /// Calculate integral from a to b
+        /// </summary>
+        /// <param name="func"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double MontecarloIntegral(this Func<double, double, double> func, double a, double b)
+        {
+            const int N = 1000;
+            var rand = new Random();
+            var sum = 0.0;
+            for (var i = 0; i < N; i++) 
+            {
+                var x = a + (b - a) * rand.NextDouble();
+                for (var j = 0; j < N; j++)
+                {
+                    var y = a + (b - a) * rand.NextDouble();
+                    sum += func(x, y) * (b - a);
+                }
+            }
+
+            return sum / (N * N);
         }
     }
 }
