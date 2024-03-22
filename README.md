@@ -2,12 +2,12 @@
 
 # 2. プログラムについて
 ## 2-1.フォルダ構成
-### 2-1-2. distributions
+### 2-1-1. distributions
 確率分布クラスをまとめたフォルダ。continuousフォルダに連続型の確率分布クラス、discreteフォルダに離散型の確率分布クラスがまとめられている。
 
 それぞれの確率分布クラスは基底クラスを継承しており（連続型はContinuousDistributionBase、離散型はDiscreteDistributionBase）、
 おのおのの基底クラスは抽象クラスAbstractDistributionを継承している。
-### extensions
+### 2-1-2. extensions
 拡張メソッドクラスをまとめたフォルダ。今回は階乗や順列、組み合わせなどの演算メソッドを拡張クラスとして実装している。
 ## 2-2. 特記事項
 ### 2-2-1. 積分計算について
