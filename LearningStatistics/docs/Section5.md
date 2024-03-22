@@ -173,9 +173,9 @@ $$f(x) = N(1, 0) = \cfrac{1}{\sqrt{2\pi}}e^{-\cfrac{x^2}{2}}$$
 
 $$F_{X^2}(x) = P(X^2 \leq x) = \cfrac{1}{\sqrt{2\pi}}\int_{-\sqrt{x}}^{\sqrt{x}}e^{-\cfrac{t^2}{2}}dt$$
 
-$$= \cfrac{2}{\sqrt{2\pi}}(\int_{0}^{\sqrt{x}}t^{2}e^-\cfrac{t^2}{2})$$
+$$= \cfrac{2}{\sqrt{2\pi}}(\int_{0}^{\sqrt{x}}t^{2}e^{-\cfrac{t^2}{2}})$$
 
-$$= \cfrac{2}{\sqrt{2\pi}}(\int_{-\infty}^{\sqrt{x}}e^-\cfrac{t^2}{2}dt - \int_{-\infty}^{0}e^-\cfrac{t^2}{2}dt)$$
+$$= \cfrac{2}{\sqrt{2\pi}}(\int_{-\infty}^{\sqrt{x}}e^{-\cfrac{t^2}{2}}dt - \int_{-\infty}^{0}e^{-\cfrac{t^2}{2}}dt)$$
 
 [0, 1]の正規分布の累積分布関数を $\varPhi(x)$ とすると、 $F_{X^2}(x) = 2(\varPhi(\sqrt{x}) - \cfrac{1}{2})$ と表せる。
 
@@ -191,3 +191,30 @@ $$2\cfrac{d}{dx}\int_{0}^{\sqrt{x}}e^{\cfrac{t^2}{2}}dt = 2e^{-\cfrac{x^2}{2}}\c
 
 $$= \cfrac{1}{\sqrt{2 \pi x}} e^{-\cfrac{x^2}{2}}$$
 
+期待値は、
+
+$$E(X^2) = \cfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x^2e^{-\cfrac{x^2}{2}}dx$$
+
+$$= -\cfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x\cfrac{d}{dx}e^{-\cfrac{x^2}{2}}dx$$
+
+$$= \cfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-\cfrac{x^2}{2}}dx$$
+
+$$= 1$$
+
+分散は、
+
+$$E(V^2) = E(X^4) - (E(X^2))^2$$ 
+
+ここで、
+
+$$E(X^4) = \cfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x^4e^{-\cfrac{x^2}{2}}dx$$
+
+$$= -\cfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x^3\cfrac{d}{dx}e^{-\cfrac{x^2}{2}}dx$$
+
+$$= \cfrac{3}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x^2e^{-\cfrac{x^2}{2}}dx$$
+
+$$= 3$$
+
+よって、
+
+$$E(V^2) = 2$$
