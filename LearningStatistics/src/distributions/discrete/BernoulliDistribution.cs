@@ -5,7 +5,5 @@
     /// </summary>
     /// <remarks>Bernoulli Distribution is defined by Bi(1, p)</remarks>
     /// <param name="p"></param>
-    public class BernoulliDistribution(double p) : BinomialDistribution(1, p)
-    {
-    }
+    public class BernoulliDistribution(double p) : BinomialDistribution(1, p) {}
 }

@@ -4,7 +4,7 @@
     {
         public GeneralDistribution(double[] param)
         {
-            _func = x => x >= 0 && x < param.Length ? param[x] : 0;
+            _func = x => (x >= 0 && x < param.Length) ? param[x] : 0;
         }
     }
 }

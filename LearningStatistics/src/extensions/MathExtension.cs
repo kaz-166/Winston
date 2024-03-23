@@ -59,57 +59,6 @@
         }
 
         /// <summary>
-        /// Calculate integral from -∞ to +∞
-        /// </summary>
-        /// <param name="func"></param>
-        /// <returns></returns>
-        public static double Integral(this Func<double, double> func)
-        {
-            const double PSEUDO_INFINITY = 100;
-
-            return Integral(func, -PSEUDO_INFINITY, PSEUDO_INFINITY);
-        }
-
-        /// <summary>
-        /// Calculate integral from a to b
-        /// </summary>
-        /// <param name="func"></param>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static double Integral(this Func<double, double> func, double a, double b)
-        {
-            const double RESOLUTION = 0.005;
-
-            var sum = 0.0;
-            for (var x = a; x < b; x += RESOLUTION)
-            {
-                sum += func(x) * RESOLUTION;
-            }
-            return sum;
-        }
-
-        /// <summary>
-        /// Calculate integral from a to b
-        /// </summary>
-        /// <param name="func"></param>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static double MontecarloIntegral(this Func<double, double> func, double a, double b)
-        {
-            const int N = 1000;
-            var rand = new Random();
-            var sum = 0.0;
-            for (var i = 0; i < N; i++)
-            {
-                var x = a + (b - a) * rand.NextDouble();
-                sum += func(x) * (b - a);
-            }
-            return sum / N;
-        }
-
-        /// <summary>
         /// Calculate summation from -∞ to +∞
         /// </summary>
         /// <returns>Summation</returns>
@@ -150,47 +99,6 @@
                 }
             }
             return sum;
-        }
-
-        public static double Integral(this Func<double, double, double> func)
-        {
-            const double PSEUDO_INFINITY = 10;
-            const double RESOLUTION = 0.01;
-
-            var sum = 0.0;
-            for (var i = -PSEUDO_INFINITY; i < PSEUDO_INFINITY; i += RESOLUTION)
-            {
-                for (var j = -PSEUDO_INFINITY; j < PSEUDO_INFINITY; j += RESOLUTION)
-                {
-                    sum += func(i, j) * RESOLUTION * RESOLUTION;
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        /// Calculate integral from a to b
-        /// </summary>
-        /// <param name="func"></param>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static double MontecarloIntegral(this Func<double, double, double> func, double a, double b)
-        {
-            const int N = 1000;
-            var rand = new Random();
-            var sum = 0.0;
-            for (var i = 0; i < N; i++) 
-            {
-                var x = a + (b - a) * rand.NextDouble();
-                for (var j = 0; j < N; j++)
-                {
-                    var y = a + (b - a) * rand.NextDouble();
-                    sum += func(x, y) * (b - a);
-                }
-            }
-
-            return sum / (N * N);
         }
     }
 }

@@ -1,14 +1,14 @@
-﻿using LearningStatistics.src.extensions;
+﻿using LearningStatistics.src.interfaces;
 
 namespace LearningStatistics.src.multi_distributions.continuous
 {
-    public class ContinuousXYDistributionBase
+    public class ContinuousXYDistributionBase(IIntegralCalculator integral)
     {
         protected Func<double, double, double> _func = (x, y) => 0;
 
         protected double PSEUDO_INFINITY = 10;
 
-        protected double RESOLUTION = 0.005;
+        private readonly IIntegralCalculator _integral = integral;
 
         /// <summary>
         /// Marginal Probability Distribution X
@@ -16,14 +16,10 @@ namespace LearningStatistics.src.multi_distributions.continuous
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public virtual double MarginalProbabilityDistributionX(double x)
+        public double MarginalProbabilityDistributionX(double x)
         {
-            var sum = 0.0;
-            for (var y = -PSEUDO_INFINITY; y < PSEUDO_INFINITY; y += RESOLUTION)
-            {
-                sum += ((_func(x, y) + _func(x, y + 1)) / 2) * RESOLUTION;
-            }
-            return sum;
+            Func<double, Func<double, double>> partial = x => y => _func(x, y);
+            return _integral.Integral(partial(x), -PSEUDO_INFINITY, PSEUDO_INFINITY);
         }
 
         /// <summary>
@@ -32,26 +28,28 @@ namespace LearningStatistics.src.multi_distributions.continuous
         /// </summary>
         /// <param name="y"></param>
         /// <returns></returns>
-        public virtual double MarginalProbabilityDistributionY(double y)
+        public double MarginalProbabilityDistributionY(double y)
         {
-            var sum = 0.0;
-            for (var x = -PSEUDO_INFINITY; x < PSEUDO_INFINITY; x += RESOLUTION)
-            {
-                sum += ((_func(x, y) + _func(x + 1, y)) / 2) * RESOLUTION;
-            }
-            return sum;
+            Func<double, Func<double, double>> partial = y => x => _func(x, y);
+            return _integral.Integral(partial(y), -PSEUDO_INFINITY, PSEUDO_INFINITY);
         }
 
+        /// <summary>
+        /// Calculate Expectation X : E(X)
+        /// </summary>
+        /// <returns></returns>
         public double ExpectationX() 
         {
-            Func<double, double> f = x => x * MarginalProbabilityDistributionX(x);
-            return f.MontecarloIntegral(-1, 1);
+            return _integral.Integral(x => x * MarginalProbabilityDistributionX(x), -1, 1);
         }
 
+        /// <summary>
+        /// Calculate Expectation Y : E(Y)
+        /// </summary>
+        /// <returns></returns>
         public double ExpectationY()
         {
-            Func<double, double> f = y => y * MarginalProbabilityDistributionY(y);
-            return f.MontecarloIntegral(-1, 1);
+            return _integral.Integral(y => y * MarginalProbabilityDistributionY(y), -1, 1);
         }
 
         /// <summary>
@@ -61,8 +59,7 @@ namespace LearningStatistics.src.multi_distributions.continuous
         /// <returns></returns>
         public double Expectation(Func<double, double, double> phy)
         {
-            Func<double, double, double> f = (x, y) => phy(x, y) * _func(x, y);
-            return f.MontecarloIntegral(-1, 1);
+            return _integral.Integral((x, y) => phy(x, y) * _func(x, y), -1, 1);
         }
 
         /// <summary>
@@ -100,6 +97,5 @@ namespace LearningStatistics.src.multi_distributions.continuous
         {
             return Covariance() / Math.Sqrt((VarianceX() * VarianceY()));
         }
-
     }
 }

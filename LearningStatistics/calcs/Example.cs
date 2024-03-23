@@ -1,4 +1,5 @@
 ﻿using LearningStatistics.src.distributions.discrete;
+using LearningStatistics.src.implements;
 using LearningStatistics.src.multi_distributions.continuous;
 using LearningStatistics.src.multi_distributions.discrete;
 using System.Diagnostics;
@@ -21,7 +22,9 @@ namespace LearningStatistics.calcs
 
         public static void p139() 
         {
-            var dist = new SampleXYDistribution();
+            var integral = new MontecarloIntegralCalculator(100);
+            var dist = new SampleXYDistribution(integral);
+
             Console.WriteLine("周辺確率密度関数X 0.5: {0}", dist.MarginalProbabilityDistributionX(0.5));
             Console.WriteLine("周辺確率密度関数X 0.3: {0}", dist.MarginalProbabilityDistributionX(0.3));
             Console.WriteLine("周辺確率密度関数X 0.3: {0}", dist.MarginalProbabilityDistributionX(0.1));

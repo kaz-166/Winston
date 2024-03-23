@@ -5,9 +5,7 @@
         /// <summary>
         /// 6-sided, most popular dice distribution
         /// </summary>
-        public SaikoroDistribution() : this(6)
-        {
-        }
+        public SaikoroDistribution() : this(6) {}
 
         /// <summary>
         /// n-sided dice distribution
@@ -17,7 +15,7 @@
         public SaikoroDistribution(int n)
         {
             ArgumentOutOfRangeException.ThrowIfLessThan(n, 1);
-            _func = x => x > 0 && x <= n ? 1 / (double)n : 0;
+            _func = x => (x > 0 && x <= n) ? 1 / (double)n : 0;
         }
     }
 }

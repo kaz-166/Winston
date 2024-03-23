@@ -1,10 +1,14 @@
-﻿using LearningStatistics.src.extensions;
+﻿using LearningStatistics.src.interfaces;
 
 namespace LearningStatistics.src.distributions.continuous
 {
-    public class ContinuousDistributionBase : AbstractDistribution<double>
+    public class ContinuousDistributionBase(IIntegralCalculator integral) : AbstractDistribution<double>
     {
         protected Func<double, double> _func = x => 0;
+
+        private readonly IIntegralCalculator _integral = integral;
+
+        protected double PSEUDO_INFINITY = 10;
 
         /// <summary>
         /// Return function value : f(x)
@@ -32,8 +36,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// <returns>Expectation</returns>
         public override double Expectation(Func<double, double> phy)
         {
-            Func<double, double> f = x => phy(x) * _func(x);
-            return f.Integral();
+            return _integral.Integral(x => phy(x) * _func(x), -PSEUDO_INFINITY, PSEUDO_INFINITY);
         }
 
         /// <summary>
@@ -42,7 +45,6 @@ namespace LearningStatistics.src.distributions.continuous
         /// <returns>Variance</returns>
         public override double Variance()
         {
-            // V[X] = E[X^2] - (E[X])^2
             return Expectation(x => x * x) - Expectation() * Expectation();
         }
 
@@ -99,7 +101,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// <returns></returns>
         public double Integral()
         {
-            return _func.Integral();
+            return _integral.Integral(_func, -PSEUDO_INFINITY, PSEUDO_INFINITY);
         }
 
         /// <summary>
@@ -110,7 +112,7 @@ namespace LearningStatistics.src.distributions.continuous
         /// <returns></returns>
         public double Integral(double a, double b)
         {
-            return _func.Integral(a, b);
+            return _integral.Integral(_func, a, b);
         }
     }
 }
