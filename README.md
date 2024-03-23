@@ -19,13 +19,21 @@
 ### 2-2-1. 離散型
 ・二項分布(BinomialDistribution.cs)
 
+$$f(x) = \cfrac{n!}{(n-x)!x!}p^{x}(1-p)^{n-x}$$
+
 ・ベルヌーイ分布(BernouliDistribution.cs)
+
+$$f(x) = p^{x}(1-p)^{1-x}$$
 
 ・超幾何分布(HypergeometricDistribution.cs)
 ### 2-2-2. 連続型
 ・一様分布(UniformDistribution.cs)
 
+$$f(x) = \cfrac{1}{b-a}$$
+
 ・指数分布(ExponentialDistribution.cs)
+
+$$f(x) = \lambda e^{-\lambda x}$$
 
 ## 2-3. 特記事項
 ### 2-3-1. 積分計算について
