@@ -55,19 +55,13 @@ namespace LearningStatistics.src.multi_distributions.discrete
         /// Calculate Variance V(X)
         /// </summary>
         /// <returns></returns>
-        public double VarianceX() 
-        {
-            return Expectation((x, y) => Math.Pow(x - Expectation((x, y) => x), 2));
-        }
+        public double VarianceX() => Expectation((x, y) => Math.Pow(x - Expectation((x, y) => x), 2));
 
         /// <summary>
         /// Calculate Variance V(Y)
         /// </summary>
         /// <returns></returns>
-        public double VarianceY()
-        {
-            return Expectation((x, y) => Math.Pow(y - Expectation((x, y) => y), 2));
-        }
+        public double VarianceY() => Expectation((x, y) => Math.Pow(y - Expectation((x, y) => y), 2));
 
         /// <summary>
         /// Calculate Covariance(X, Y)
@@ -83,10 +77,6 @@ namespace LearningStatistics.src.multi_distributions.discrete
         /// Calculate Corelative Coefficient
         /// </summary>
         /// <returns></returns>
-        public double CorrelativeCoefficient() 
-        {
-            return Covariance() / Math.Sqrt((VarianceX() * VarianceY()));
-        }
-
+        public double CorrelativeCoefficient() => Covariance() / Math.Sqrt((VarianceX() * VarianceY()));
     }
 }

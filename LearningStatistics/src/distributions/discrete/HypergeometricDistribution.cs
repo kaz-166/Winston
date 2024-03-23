@@ -6,6 +6,7 @@ namespace LearningStatistics.src.distributions.discrete
     {
         public HypergeometricDistribution(int N, int M, int n)
         {
+            // Validation
             ArgumentOutOfRangeException.ThrowIfLessThan(N, 0);
             ArgumentOutOfRangeException.ThrowIfLessThan(M, 0);
             ArgumentOutOfRangeException.ThrowIfLessThan(n, 0);
