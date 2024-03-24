@@ -3,9 +3,10 @@
 namespace LearningStatistics.src.implements
 {
     /// <summary>
-    /// Monte Carlo Arlgorithm
+    /// Monte Carlo Algorithm
     /// </summary>
-    /// <param name="count"></param>
+    /// <remarks>Implemetaion of IIntegralCalculator by Monte Carlo Integral</remarks>
+    /// <param name="count">Count of sampling</param>
     public class MontecarloIntegralCalculator(int count = 1000) : IIntegralCalculator
     {
         private readonly int _count = count;
