@@ -1,4 +1,6 @@
 ﻿using LearningStatistics.calcs;
+using LearningStatistics.src.extensions;
+using LearningStatistics.src.implements;
 using LearningStatistics.src.view;
 
 //Answer.Section4_3();
@@ -8,4 +10,6 @@ using LearningStatistics.src.view;
 //Example.p139();
 
 DisplayStatistics.Display();
+
+
 

@@ -1,4 +1,6 @@
-﻿namespace LearningStatistics.src.extensions
+﻿using System.Linq.Expressions;
+
+namespace LearningStatistics.src.extensions
 {
     /// <summary>
     /// Extension Methods
@@ -99,6 +101,22 @@
                 }
             }
             return sum;
+        }
+
+        public static Func<double, double> Differentiate(this Func<double, double> func)
+        {
+            const double delta = 0.001;
+            return x => (func(x + delta) - func(x)) / delta;
+        }
+
+        public static Func<double, double> Differentiate(this Func<double, double> func, int count)
+        {
+            Func<double, double> f = func;
+            for (var i = 0; i < count; i++)
+            {
+                f = Differentiate(f);
+            }
+            return f;
         }
     }
 }
