@@ -1,6 +1,9 @@
+## 1-1. 概要
+## 
+
 ## 2-1.フォルダ構成
 ### 2-1-1. distributions
-確率分布クラスをまとめたフォルダ。continuousフォルダに連続型の確率分布クラス、discreteフォルダに離散型の確率分布クラスがまとめられている。
+確率分布クラスをまとめたフォルダ。continuousフォルダに連続型の確率分布クラス、discreteフォルダに離散型の確率分布クラスがまとめられている。分布の各論については2-2.を参照のこと。
 
 それぞれの確率分布クラスは基底クラスを継承しており（連続型はContinuousDistributionBase、離散型はDiscreteDistributionBase）、
 おのおのの基底クラスは抽象クラスAbstractDistributionを継承している。
