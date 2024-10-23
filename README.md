@@ -16,7 +16,7 @@ https://www.amazon.co.jp/%E7%B5%B1%E8%A8%88%E5%AD%A6%E5%85%A5%E9%96%80-%E5%9F%BA
 本プログラムでは依存性逆転の原則(Depemdency Inversion Plinciple)の考え方に則り、積分計算クラスのインターフェースを用意し、依存性注入（DI）によりI/Fと実装を分離している。
 
 ## 2-2. 分布
-本プログラムでは下記の確率分布を実装している。
+本プログラムにて取り扱う分布を下記に示す。
 ### 2-2-1. 離散型
 ・二項分布(BinomialDistribution.cs)
 
